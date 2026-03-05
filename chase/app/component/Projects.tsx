@@ -58,10 +58,10 @@ const PROJECTS: Project[] = [
     code: "Project 03",
     status: "ONGOING",
     tags: ["DAO", "Writing", "Strategy"],
-    name: "DAO — Community & Governance",
+    name: "KOL",
     description: "Currently helping a DAO turn passive token holders into people who actually participate. I handle the governance communication, onboarding content, and writing that makes complex decisions feel approachable.",
     impact: "→ Governance participation is up and the community feels more alive.",
-    image: "/images/project-3.jpg",  // ← replace with your image
+    image: "/images/kol.jpg",  // ← replace with your image
     link: "#contact",
   },
 ];

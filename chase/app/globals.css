@@ -1,23 +1,19 @@
-/* ── Force dark mode regardless of device setting ── */
+@import "tailwindcss";
+
+/* ── Force dark midnight blue theme on ALL devices ── */
 :root {
   color-scheme: dark;
-  background-color: #04080f;
-  color: #f2ede6;
+  --background: #060d1f;
+  --foreground: #f2ede6;
+  --accent: #00b4ff;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color-scheme: dark;
-    background-color: #04080f;
-    color: #f2ede6;
+    --background: #060d1f;
+    --foreground: #f2ede6;
   }
-}
-
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
 }
 
 @theme inline {
@@ -27,15 +23,23 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background-color: #060d1f;
+  color: #f2ede6;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Signal bar animation ── */
+.signal-bar-fill {
+  height: 100%;
+  width: var(--level, 0%);
+  background: linear-gradient(90deg, #0077cc, #00b4ff);
+  box-shadow: 0 0 8px rgba(0, 180, 255, 0.4);
+  transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Ticker animation ── */
+@keyframes tickerFloat {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-33.333%); }
 }

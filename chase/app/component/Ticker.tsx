@@ -11,11 +11,11 @@ export default function Ticker() {
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS, ...TICKER_ITEMS];
 
   return (
-    <div className="border-y border-[rgba(0,255,136,0.15)] bg-[rgba(0,255,136,0.02)] py-4 overflow-hidden relative">
+    <div className="border-y border-[rgba(0,180,255,0.15)] bg-[rgba(0,180,255,0.02)] py-4 overflow-hidden relative">
       {/* Fade left edge */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#04080f] to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#060d1f] to-transparent z-10 pointer-events-none" />
       {/* Fade right edge */}
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#04080f] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#060d1f] to-transparent z-10 pointer-events-none" />
 
       <div
         className="flex items-center w-max"
@@ -30,7 +30,7 @@ export default function Ticker() {
               fontSize: "clamp(24px, 3vw, 34px)",
               letterSpacing: "0.08em",
               color: i % TICKER_ITEMS.length === 0
-                ? "#00ff88"
+                ? "#00b4ff"
                 : "rgba(242,237,230,0.8)",
               whiteSpace: "nowrap",
             }}
@@ -41,7 +41,7 @@ export default function Ticker() {
               width: "5px",
               height: "5px",
               borderRadius: "50%",
-              background: "#00ff88",
+              background: "#00b4ff",
               opacity: 0.45,
               flexShrink: 0,
             }} />

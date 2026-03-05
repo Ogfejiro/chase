@@ -12,13 +12,13 @@ export default function AboutGraphic() {
       >
         <defs>
           <radialGradient id="orb-core" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#00ff88" stopOpacity="0.9" />
-            <stop offset="60%" stopColor="#00ff88" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#00ff88" stopOpacity="0" />
+            <stop offset="0%" stopColor="#00b4ff" stopOpacity="0.9" />
+            <stop offset="60%" stopColor="#00b4ff" stopOpacity="0.3" />
+            <stop offset="100%" stopColor="#00b4ff" stopOpacity="0" />
           </radialGradient>
           <radialGradient id="orb-glow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#00ff88" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="#00ff88" stopOpacity="0" />
+            <stop offset="0%" stopColor="#00b4ff" stopOpacity="0.15" />
+            <stop offset="100%" stopColor="#00b4ff" stopOpacity="0" />
           </radialGradient>
         </defs>
 
@@ -28,7 +28,7 @@ export default function AboutGraphic() {
         {/* Ring 1 — outermost slow */}
         <ellipse
           cx="210" cy="210" rx="190" ry="55"
-          stroke="#00ff88" strokeWidth="0.5" strokeOpacity="0.4"
+          stroke="#00b4ff" strokeWidth="0.5" strokeOpacity="0.4"
           strokeDasharray="4 6"
         >
           <animateTransform
@@ -42,7 +42,7 @@ export default function AboutGraphic() {
         </ellipse>
 
         {/* Ring 1 orbiting dot */}
-        <circle r="4" fill="#00ff88">
+        <circle r="4" fill="#00b4ff">
           <animateMotion dur="22s" repeatCount="indefinite">
             <mpath xlinkHref="#path-r1" />
           </animateMotion>
@@ -52,7 +52,7 @@ export default function AboutGraphic() {
         {/* Ring 2 — medium tilt */}
         <ellipse
           cx="210" cy="210" rx="145" ry="70"
-          stroke="#00ff88" strokeWidth="0.6" strokeOpacity="0.5"
+          stroke="#00b4ff" strokeWidth="0.6" strokeOpacity="0.5"
           transform="rotate(-30 210 210)"
         >
           <animateTransform
@@ -66,7 +66,7 @@ export default function AboutGraphic() {
         </ellipse>
 
         {/* Ring 2 dot */}
-        <circle r="5" fill="#00ff88" fillOpacity="0.9">
+        <circle r="5" fill="#00b4ff" fillOpacity="0.9">
           <animateMotion dur="14s" repeatCount="indefinite">
             <mpath xlinkHref="#path-r2" />
           </animateMotion>
@@ -76,7 +76,7 @@ export default function AboutGraphic() {
         {/* Ring 3 — steep inner */}
         <ellipse
           cx="210" cy="210" rx="100" ry="30"
-          stroke="#00ff88" strokeWidth="0.8" strokeOpacity="0.6"
+          stroke="#00b4ff" strokeWidth="0.8" strokeOpacity="0.6"
           transform="rotate(60 210 210)"
         >
           <animateTransform
@@ -90,7 +90,7 @@ export default function AboutGraphic() {
         </ellipse>
 
         {/* Ring 3 dot — smallest orbit */}
-        <circle r="3.5" fill="#00ff88">
+        <circle r="3.5" fill="#00b4ff">
           <animateMotion dur="9s" repeatCount="indefinite">
             <mpath xlinkHref="#path-r3" />
           </animateMotion>
@@ -98,12 +98,12 @@ export default function AboutGraphic() {
         <path id="path-r3" d="M 110,210 A 100,30 0 1,1 310,210 A 100,30 0 1,1 110,210" fill="none" transform="rotate(60 210 210)" />
 
         {/* Horizontal equator line */}
-        <line x1="20" y1="210" x2="400" y2="210" stroke="#00ff88" strokeWidth="0.3" strokeOpacity="0.2" strokeDasharray="2 8" />
+        <line x1="20" y1="210" x2="400" y2="210" stroke="#00b4ff" strokeWidth="0.3" strokeOpacity="0.2" strokeDasharray="2 8" />
 
         {/* Inner hexagon — slowly rotating */}
         <polygon
           points="210,168 243,189 243,231 210,252 177,231 177,189"
-          stroke="#00ff88" strokeWidth="0.8" strokeOpacity="0.5" fill="none"
+          stroke="#00b4ff" strokeWidth="0.8" strokeOpacity="0.5" fill="none"
         >
           <animateTransform
             attributeName="transform"
@@ -118,7 +118,7 @@ export default function AboutGraphic() {
         {/* Inner hexagon — counter */}
         <polygon
           points="210,182 232,194 232,226 210,238 188,226 188,194"
-          stroke="#00ff88" strokeWidth="0.5" strokeOpacity="0.3" fill="none"
+          stroke="#00b4ff" strokeWidth="0.5" strokeOpacity="0.3" fill="none"
         >
           <animateTransform
             attributeName="transform"
@@ -134,7 +134,7 @@ export default function AboutGraphic() {
         <circle cx="210" cy="210" r="16" fill="url(#orb-core)">
           <animate attributeName="r" values="14;18;14" dur="3s" repeatCount="indefinite" />
         </circle>
-        <circle cx="210" cy="210" r="6" fill="#00ff88" fillOpacity="0.95">
+        <circle cx="210" cy="210" r="6" fill="#00b4ff" fillOpacity="0.95">
           <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite" />
         </circle>
 
@@ -152,7 +152,7 @@ export default function AboutGraphic() {
               suppressHydrationWarning
               key={i}
               x1={x1} y1={y1} x2={x2} y2={y2}
-              stroke="#00ff88" strokeWidth="0.8" strokeOpacity="0.4"
+              stroke="#00b4ff" strokeWidth="0.8" strokeOpacity="0.4"
             />
           );
         })}

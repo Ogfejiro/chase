@@ -32,12 +32,12 @@ interface Collaborator {
 const COLLABORATORS: Collaborator[] = [
   {
     id: "col-01",
-    name: "Collaborator Name",        // ← update
-    role: "Their Role",               // ← update
+    name: "10X of web3",        // ← update
+    role: "Web3 Markerter",               // ← update
     domain: "Their Field",            // ← update
     status: "ACTIVE",
     brief: "Write what you both worked on together and what the result was.",  // ← update
-    image: "/images/collab-1.jpg",   // ← add your image here
+    image: "/images/10x.jpg",   // ← add your image here
     link: "#",                        // ← update with their profile link
   },
   {
@@ -47,7 +47,7 @@ const COLLABORATORS: Collaborator[] = [
     domain: "Their Field",            // ← update
     status: "COMPLETED",
     brief: "Write what you both worked on together and what the result was.",  // ← update
-    image: "/images/collab-2.jpg",   // ← add your image here
+    image: "/images/redguy.jpg",   // ← add your image here
     link: "#",
   },
   {
@@ -57,7 +57,7 @@ const COLLABORATORS: Collaborator[] = [
     domain: "Their Field",            // ← update
     status: "ONGOING",
     brief: "Write what you both worked on together and what the result was.",  // ← update
-    image: "/images/collab-3.jpg",   // ← add your image here
+    image: "/images/greyguy.jpg",   // ← add your image here
     link: "#",
   },
 ];
