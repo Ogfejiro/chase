@@ -57,17 +57,17 @@ const PROJECTS: Project[] = [
     id: "project-03",
     code: "Project 03",
     status: "ONGOING",
-    tags: ["DAO", "Writing", "Strategy"],
+    tags: ["KOL", "Writing", "Strategy"],
     name: "KOL",
     description: "Currently helping a DAO turn passive token holders into people who actually participate. I handle the governance communication, onboarding content, and writing that makes complex decisions feel approachable.",
     impact: "→ Governance participation is up and the community feels more alive.",
     image: "/images/kol.jpg",  // ← replace with your image
-    link: "#contact",
+    link: "https://x.com/chas30bg/status/2028336779665793032",
   },
 ];
 
 const STATUS_COLORS: Record<Project["status"], string> = {
-  COMPLETED:  "text-[#00ff88] border-[rgba(0,255,136,0.3)]",
+  COMPLETED:  "text-[#00b4ff] border-[rgba(0,180,255,0.3)]",
   ONGOING:    "text-[#f59e0b] border-[rgba(245,158,11,0.3)]",
   CLASSIFIED: "text-[rgba(242,237,230,0.4)] border-[rgba(242,237,230,0.1)]",
 };
@@ -80,17 +80,17 @@ const STATUS_LABELS: Record<Project["status"], string> = {
 
 function ProjectCard({ project, delay }: { project: Project; delay: string }) {
   return (
-    <div className={`reveal ${delay} relative border border-[rgba(0,255,136,0.1)] hover:border-[rgba(0,255,136,0.3)] transition-all duration-500 group bg-[rgba(0,255,136,0.01)] hover:bg-[rgba(0,255,136,0.03)] flex flex-col`}>
+    <div className={`reveal ${delay} relative border border-[rgba(0,180,255,0.1)] hover:border-[rgba(0,180,255,0.3)] transition-all duration-500 group bg-[rgba(0,180,255,0.01)] hover:bg-[rgba(0,180,255,0.03)] flex flex-col`}>
 
       {/* Header bar */}
-      <div className="flex items-center justify-between px-5 py-3.5 border-b border-[rgba(0,255,136,0.08)]">
-        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[9px] text-[rgba(0,255,136,0.4)] tracking-widest">{project.code}</span>
+      <div className="flex items-center justify-between px-5 py-3.5 border-b border-[rgba(0,180,255,0.08)]">
+        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[9px] text-[rgba(0,180,255,0.4)] tracking-widest">{project.code}</span>
         <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className={`text-[9px] tracking-widest border px-2 py-0.5 ${STATUS_COLORS[project.status]}`}>{STATUS_LABELS[project.status]}</span>
       </div>
 
       {/* ── IMAGE AREA ── */}
       {/* Drop your image files into public/images/ and update the image path in PROJECTS above */}
-      <div className="relative w-full h-52 border-b border-[rgba(0,255,136,0.08)] overflow-hidden bg-[rgba(0,255,136,0.02)]">
+      <div className="relative w-full h-52 border-b border-[rgba(0,180,255,0.08)] overflow-hidden bg-[rgba(0,180,255,0.02)]">
         {project.image ? (
           <img
             src={project.image}
@@ -100,20 +100,20 @@ function ProjectCard({ project, delay }: { project: Project; delay: string }) {
         ) : (
           /* Shown until you add the real image */
           <div className="w-full h-full flex flex-col items-center justify-center gap-3">
-            <div className="w-14 h-14 border-2 border-dashed border-[rgba(0,255,136,0.2)] flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="rgba(0,255,136,0.3)" strokeWidth="1.5">
+            <div className="w-14 h-14 border-2 border-dashed border-[rgba(0,180,255,0.2)] flex items-center justify-center">
+              <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="rgba(0,180,255,0.3)" strokeWidth="1.5">
                 <rect x="3" y="3" width="18" height="18" rx="2" />
                 <circle cx="8.5" cy="8.5" r="1.5" />
                 <path d="M21 15l-5-5L5 21" />
               </svg>
             </div>
-            <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "8px" }} className="text-[rgba(0,255,136,0.25)] tracking-widest uppercase text-center px-4">
+            <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "8px" }} className="text-[rgba(0,180,255,0.25)] tracking-widest uppercase text-center px-4">
               Add image → public/images/{project.id}.jpg
             </span>
           </div>
         )}
         {/* Gradient overlay so text below reads cleanly */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(4,8,15,0.6)] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(6,13,31,0.6)] via-transparent to-transparent" />
       </div>
 
       {/* Body */}
@@ -125,15 +125,15 @@ function ProjectCard({ project, delay }: { project: Project; delay: string }) {
           ))}
         </div>
 
-        <h3 className="text-white text-xl font-bold mb-3 group-hover:text-[#00ff88] transition-colors duration-300" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{project.name}</h3>
+        <h3 className="text-white text-xl font-bold mb-3 group-hover:text-[#00b4ff] transition-colors duration-300" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{project.name}</h3>
         <p className="text-[rgba(242,237,230,0.55)] text-sm leading-relaxed mb-4 font-light flex-1" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{project.description}</p>
-        <p style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[11px] text-[#00ff88] mb-6">{project.impact}</p>
+        <p style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[11px] text-[#00b4ff] mb-6">{project.impact}</p>
 
-        <div className="h-px bg-[rgba(0,255,136,0.08)] mb-5" />
+        <div className="h-px bg-[rgba(0,180,255,0.08)] mb-5" />
 
         <a href={project.link} className="group/btn flex items-center gap-2 no-underline">
-          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] tracking-widest uppercase text-[rgba(242,237,230,0.4)] group-hover/btn:text-[#00ff88] transition-colors">Get in touch</span>
-          <div className="h-px w-6 bg-[rgba(242,237,230,0.2)] group-hover/btn:w-10 group-hover/btn:bg-[#00ff88] transition-all duration-300" />
+          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] tracking-widest uppercase text-[rgba(242,237,230,0.4)] group-hover/btn:text-[#00b4ff] transition-colors">Get in touch</span>
+          <div className="h-px w-6 bg-[rgba(242,237,230,0.2)] group-hover/btn:w-10 group-hover/btn:bg-[#00b4ff] transition-all duration-300" />
         </a>
       </div>
     </div>
@@ -143,11 +143,11 @@ function ProjectCard({ project, delay }: { project: Project; delay: string }) {
 export default function Projects() {
   const ref = useReveal();
   return (
-    <section id="projects" ref={ref} className="relative border-b border-[rgba(0,255,136,0.08)]">
-      <div className="border-b border-[rgba(0,255,136,0.1)] flex items-center justify-between px-6 md:px-10 py-4">
+    <section id="projects" ref={ref} className="relative border-b border-[rgba(0,180,255,0.08)]">
+      <div className="border-b border-[rgba(0,180,255,0.1)] flex items-center justify-between px-6 md:px-10 py-4">
         <div className="flex items-center gap-3">
-          <div className="w-1.5 h-1.5 bg-[#00ff88] rounded-full animate-pulse" />
-          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(0,255,136,0.6)] tracking-widest uppercase">My Work</span>
+          <div className="w-1.5 h-1.5 bg-[#00b4ff] rounded-full animate-pulse" />
+          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(0,180,255,0.6)] tracking-widest uppercase">My Work</span>
         </div>
         <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.2)] tracking-widest hidden md:block">Real projects, real results</span>
       </div>
@@ -156,7 +156,7 @@ export default function Projects() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
           <div className="reveal">
             <h2 className="text-[clamp(40px,6vw,72px)] leading-none text-white tracking-tight" style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)" }}>
-              Projects I&apos;ve<br /><span className="text-[#00ff88]">Worked On</span>
+              Projects I&apos;ve<br /><span className="text-[#00b4ff]">Worked On</span>
             </h2>
           </div>
           <p className="reveal reveal-d1 text-[rgba(242,237,230,0.5)] text-sm leading-relaxed max-w-xs font-light" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
@@ -164,18 +164,18 @@ export default function Projects() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-0 border border-[rgba(0,255,136,0.08)]">
+        <div className="grid md:grid-cols-3 gap-0 border border-[rgba(0,180,255,0.08)]">
           {PROJECTS.map((project, i) => (
-            <div key={project.id} className="border-r border-[rgba(0,255,136,0.08)] last:border-r-0">
+            <div key={project.id} className="border-r border-[rgba(0,180,255,0.08)] last:border-r-0">
               <ProjectCard project={project} delay={["", "reveal-d1", "reveal-d2"][i] ?? ""} />
             </div>
           ))}
         </div>
 
         <div className="reveal reveal-d3 flex items-center gap-4 mt-10">
-          <div className="h-px flex-1 bg-[rgba(0,255,136,0.06)]" />
-          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[9px] text-[rgba(0,255,136,0.3)] tracking-widest uppercase whitespace-nowrap">More projects available on request</span>
-          <div className="h-px flex-1 bg-[rgba(0,255,136,0.06)]" />
+          <div className="h-px flex-1 bg-[rgba(0,180,255,0.06)]" />
+          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[9px] text-[rgba(0,180,255,0.3)] tracking-widest uppercase whitespace-nowrap">More projects available on request</span>
+          <div className="h-px flex-1 bg-[rgba(0,180,255,0.06)]" />
         </div>
       </div>
     </section>
