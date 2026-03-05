@@ -1,3 +1,18 @@
+/* ── Force dark mode regardless of device setting ── */
+:root {
+  color-scheme: dark;
+  background-color: #04080f;
+  color: #f2ede6;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: dark;
+    background-color: #04080f;
+    color: #f2ede6;
+  }
+}
+
 @import "tailwindcss";
 
 :root {
