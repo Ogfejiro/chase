@@ -22,7 +22,7 @@ const SITE = {
   email: "chas30bg@gmail.com",       // ← update
   handle: "@Chase30BG",          // ← update
   twitter: "https://x.com/chas30bg?s=21",   // ← update
-  telegram: "https://t.me/chase",         // ← update
+  telegram: "https://t.me/Chas30BG",         // ← update
   discord: "https://discord.com/users/chase", // ← update with Chase's Discord link
 };
 

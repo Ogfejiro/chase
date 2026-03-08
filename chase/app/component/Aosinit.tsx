@@ -4,17 +4,26 @@ import { useEffect } from "react";
 
 export default function AOSInit() {
   useEffect(() => {
-    // Dynamically import AOS so it only runs client-side
     import("aos").then((AOS) => {
       AOS.default.init({
         duration: 800,
-        once: false,       // re-animate every time element enters viewport (up & down)
-        mirror: true,      // fade OUT when scrolling away, fade IN when coming back
+        once: false,
+        mirror: true,
         easing: "ease-out-cubic",
-        offset: 80,
+        offset: 60,
         delay: 0,
       });
     });
+
+    // AOS doesn't always re-check on scroll up — this forces it
+    const handleScroll = () => {
+      import("aos").then((AOS) => {
+        AOS.default.refresh();
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return null;
