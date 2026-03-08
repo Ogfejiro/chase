@@ -8,9 +8,10 @@ export default function AOSInit() {
     import("aos").then((AOS) => {
       AOS.default.init({
         duration: 800,
-        once: true,        // animate only once per element
+        once: false,       // re-animate every time element enters viewport (up & down)
+        mirror: true,      // fade OUT when scrolling away, fade IN when coming back
         easing: "ease-out-cubic",
-        offset: 80,        // trigger 80px before element enters viewport
+        offset: 80,
         delay: 0,
       });
     });
