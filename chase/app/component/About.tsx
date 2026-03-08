@@ -45,7 +45,7 @@ function SignalBar({ level }: { level: number }) {
     return () => observer.disconnect();
   }, [level]);
   return (
-    <div className="h-1 w-full bg-[rgba(0,180,255,0.08)] overflow-hidden">
+    <div className="h-1 w-full bg-[rgba(0,180,255,0.18)] overflow-hidden">
       <div ref={barRef} className="signal-bar-fill" style={{ ["--level" as string]: "0%" }} />
     </div>
   );
@@ -112,18 +112,18 @@ function AboutGraphic() {
 export default function About() {
   const ref = useReveal();
   return (
-    <section id="about" ref={ref} className="relative border-b border-[rgba(0,180,255,0.08)] overflow-hidden">
+    <section id="about" ref={ref} className="relative border-b border-[rgba(0,180,255,0.18)] overflow-hidden">
       <AboutGraphic />
 
       {/* Section label */}
-      <div className="border-b border-[rgba(0,180,255,0.1)] flex items-center justify-between px-6 md:px-10 py-4">
+      <div className="border-b border-[rgba(0,180,255,0.20)] flex items-center justify-between px-6 md:px-10 py-4">
         <div className="flex items-center gap-3">
           <div className="w-1.5 h-1.5 bg-[#00b4ff] rounded-full animate-pulse" />
           <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(0,180,255,0.6)] tracking-widest uppercase">
             About Me
           </span>
         </div>
-        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.2)] tracking-widest hidden md:block">
+        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.55)] tracking-widest hidden md:block">
           Who is Chase?
         </span>
       </div>
@@ -132,19 +132,19 @@ export default function About() {
 
         {/* Left — bio */}
         <div>
-          <div className="reveal">
+          <div data-aos="fade-up" data-aos-duration="800">
             <h2 className="text-[clamp(42px,7vw,80px)] leading-none text-white mb-6" style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)", letterSpacing: "-0.01em" }}>
               The person<br /><span className="text-[#00b4ff]">behind</span><br />the work
             </h2>
           </div>
           <div className="reveal reveal-d1 space-y-5">
-            <p className="text-[rgba(242,237,230,0.65)] leading-[1.9] font-light text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
+            <p className="text-[rgba(242,237,230,0.88)] leading-[1.9] font-light text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
               I&apos;m <span className="text-[#f2ede6] font-medium">Chase</span> — a Web3 professional who has spent years helping protocols grow their communities, sharpen their voice, and turn strangers into believers.
             </p>
-            <p className="text-[rgba(242,237,230,0.65)] leading-[1.9] font-light text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
+            <p className="text-[rgba(242,237,230,0.88)] leading-[1.9] font-light text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
               I combine <span className="text-[#f2ede6] font-medium">strategic thinking with strong writing</span> — so every campaign I touch has both a clear direction and words that actually land. I&apos;ve led ambassador programs, built communities from zero, and written content that moves markets.
             </p>
-            <p className="text-[rgba(242,237,230,0.65)] leading-[1.9] font-light text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
+            <p className="text-[rgba(242,237,230,0.88)] leading-[1.9] font-light text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
               If you need someone who can <span className="text-[#00b4ff]">build, grow, and communicate</span> — that&apos;s exactly what I do.
             </p>
           </div>
@@ -157,13 +157,13 @@ export default function About() {
         </div>
 
         {/* Right — skills */}
-        <div className="reveal reveal-d1">
+        <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
           <div style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[9px] text-[rgba(0,180,255,0.4)] tracking-widest mb-6 uppercase">
             What I&apos;m good at
           </div>
-          <div className="space-y-0 border border-[rgba(0,180,255,0.12)]">
+          <div className="space-y-0 border border-[rgba(0,180,255,0.22)]">
             {SKILLS.map((skill: Skill, i: number) => (
-              <div key={i} className="group px-5 py-5 border-b border-[rgba(0,180,255,0.08)] last:border-b-0 hover:bg-[rgba(0,180,255,0.03)] transition-colors duration-200">
+              <div key={i} className="group px-5 py-5 border-b border-[rgba(0,180,255,0.18)] last:border-b-0 hover:bg-[rgba(0,180,255,0.03)] transition-colors duration-200">
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <div>
                     <div className="mb-1.5">
@@ -173,7 +173,7 @@ export default function About() {
                   </div>
                   <span className="text-[#00b4ff] flex-shrink-0 mt-1" style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)", fontSize: "22px", lineHeight: 1 }}>{skill.level}%</span>
                 </div>
-                <p className="text-[rgba(242,237,230,0.45)] text-xs leading-relaxed mb-3 font-light" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{skill.description}</p>
+                <p className="text-[rgba(242,237,230,0.80)] text-xs leading-relaxed mb-3 font-light" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{skill.description}</p>
                 <SignalBar level={skill.level} />
               </div>
             ))}

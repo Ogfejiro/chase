@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 function useReveal() {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,42 +23,38 @@ interface Collaborator {
   role: string;
   domain: string;
   status: "ACTIVE" | "COMPLETED" | "ONGOING";
-  brief: string;
-  image: string; // ← path to image e.g. "/images/collab-1.jpg"
-  link?: string;
+  image: string;   // path e.g. /images/collab-1.jpg
+  xLink: string;   // their X/Twitter profile URL
 }
 
-// ─── UPDATE THESE with Chase's real collaborators ─────────────────────────────
+// ─── UPDATE with Chase's real collaborators ───────────────────────────────────
 const COLLABORATORS: Collaborator[] = [
   {
     id: "col-01",
-    name: "10x of Web3",        // ← update
-    role: "Web3 Markerter",               // ← update
-    domain: "Their Field",            // ← update
+    name: "10XOFWEB3  ",
+    role: "Marketer",
+    domain: "Marketer",
     status: "ACTIVE",
-    brief: "Write what you both worked on together and what the result was.",  // ← update
-    image: "/images/10x.jpg",   // ← add your image here
-    link: "#",                        // ← update with their profile link
+    image: "/images/10x.jpg",   // ← add image
+    xLink: "https://x.com/10xofweb3?s=21", // ← add X link
   },
   {
     id: "col-02",
-    name: "Collaborator Name",        // ← update
-    role: "Their Role",               // ← update
-    domain: "Their Field",            // ← update
+    name: "AlegeOfficial",
+    role: "Brand Marketer",
+    domain: "Brand Marketer",
     status: "COMPLETED",
-    brief: "Write what you both worked on together and what the result was.",  // ← update
-    image: "/images/redguy.jpg",   // ← add your image here
-    link: "#",
+    image: "/images/redguy.jpg",
+    xLink: "https://x.com/alegeofficial?s=21",
   },
   {
     id: "col-03",
-    name: "Collaborator Name",        // ← update
-    role: "Their Role",               // ← update
-    domain: "Their Field",            // ← update
+    name: "SENSEI",
+    role: "Project Manager",
+    domain: "Project Manager",
     status: "ONGOING",
-    brief: "Write what you both worked on together and what the result was.",  // ← update
-    image: "/images/greyguy.jpg",   // ← add your image here
-    link: "#",
+    image: "/images/greyguy.jpg",
+    xLink: "https://x.com/big_sensei?s=21",
   },
 ];
 
@@ -68,215 +64,158 @@ const STATUS_CONFIG = {
   ONGOING:   { color: "#f59e0b", label: "Ongoing Collaboration",      dot: "animate-pulse" },
 };
 
-function NetworkLines({ cardRefs }: { cardRefs: React.RefObject<(HTMLDivElement | null)[]> }) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-    let raf: number, t = 0;
-    function draw() {
-      if (!ctx || !canvas) return;
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      canvas.width = parent.offsetWidth;
-      canvas.height = parent.offsetHeight;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const cards = cardRefs.current;
-      if (!cards) return;
-      const pr = parent.getBoundingClientRect();
-      const rects = cards.filter(Boolean).map((el) => {
-        const r = el!.getBoundingClientRect();
-        return { cx: r.left - pr.left + r.width / 2, cy: r.top - pr.top + r.height / 2 };
-      });
-      [[0,1],[1,2],[0,2]].forEach(([a, b]) => {
-        const from = rects[a], to = rects[b];
-        if (!from || !to) return;
-        ctx.beginPath(); ctx.setLineDash([3, 8]);
-        ctx.moveTo(from.cx, from.cy); ctx.lineTo(to.cx, to.cy);
-        ctx.strokeStyle = "rgba(0,180,255,0.07)"; ctx.lineWidth = 1; ctx.stroke(); ctx.setLineDash([]);
-        const progress = ((t * (0.0015 + a * 0.0003) + (a + b) * 0.13) % 1 + 1) % 1;
-        const px = from.cx + (to.cx - from.cx) * progress;
-        const py = from.cy + (to.cy - from.cy) * progress;
-        const grd = ctx.createRadialGradient(px, py, 0, px, py, 8);
-        grd.addColorStop(0, "rgba(0,180,255,0.6)");
-        grd.addColorStop(1, "rgba(0,180,255,0)");
-        ctx.beginPath(); ctx.arc(px, py, 8, 0, Math.PI * 2); ctx.fillStyle = grd; ctx.fill();
-        ctx.beginPath(); ctx.arc(px, py, 2, 0, Math.PI * 2); ctx.fillStyle = "rgba(0,180,255,0.9)"; ctx.fill();
-      });
-      t++; raf = requestAnimationFrame(draw);
-    }
-    draw();
-    return () => cancelAnimationFrame(raf);
-  }, [cardRefs]);
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" />;
-}
-
-function CollabCard({ collab, cardRef, index }: {
-  collab: Collaborator;
-  cardRef: (el: HTMLDivElement | null) => void;
-  index: number;
-}) {
-  const [flipped, setFlipped] = useState(false);
+function CollabCard({ collab, index }: { collab: Collaborator; index: number }) {
   const cfg = STATUS_CONFIG[collab.status];
-  const delayClass = ["", "reveal-d1", "reveal-d2"][index] ?? "";
+  const aosFade = ["fade-up", "fade-up", "fade-up"][index];
+  const delay = index * 150;
 
   return (
-    <div ref={cardRef} className={`reveal ${delayClass} relative z-10`} style={{ perspective: "900px" }}>
-      <div
-        className="relative w-full transition-transform duration-700 cursor-pointer"
-        style={{ transformStyle: "preserve-3d", transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)", minHeight: "340px" }}
-        onClick={() => setFlipped(f => !f)}
-      >
+    <a
+      href={collab.xLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block no-underline group cursor-pointer"
+      data-aos={aosFade}
+      data-aos-delay={delay}
+      data-aos-duration="800"
+    >
+      <div className="relative border border-[rgba(0,180,255,0.18)] hover:border-[rgba(0,180,255,0.5)] bg-[rgba(5,11,24,0.85)] transition-all duration-300 overflow-hidden">
 
-        {/* ── FRONT ── */}
-        <div
-          className="absolute inset-0 border border-[rgba(0,180,255,0.13)] hover:border-[rgba(0,180,255,0.35)] bg-[rgba(6,13,31,0.85)] transition-all duration-300 group overflow-hidden"
-          style={{ backfaceVisibility: "hidden" }}
-        >
-          {/* Status bar */}
-          <div className="flex items-center justify-between px-4 py-2.5 border-b border-[rgba(0,180,255,0.08)]">
-            <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-[rgba(0,180,255,0.4)] tracking-widest">
-              Collaborator {String(index + 1).padStart(2, "0")}
-            </span>
-            <div className="flex items-center gap-1.5">
-              <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} style={{ background: cfg.color }} />
-              <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "8px", color: cfg.color }} className="tracking-widest">{cfg.label}</span>
-            </div>
-          </div>
+        {/* Left accent line */}
+        <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#00b4ff] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-          {/* ── IMAGE PLACEHOLDER ── */}
-          {/* Replace the src below with collab.image once you add the real images */}
-          <div className="relative w-full h-48 border-b border-[rgba(0,180,255,0.08)] overflow-hidden bg-[rgba(0,180,255,0.03)]">
-            {collab.image ? (
-              <img
-                src={collab.image}
-                alt={collab.name}
-                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-              />
-            ) : (
-              /* Placeholder shown until you add the real image */
-              <div className="w-full h-full flex flex-col items-center justify-center gap-3">
-                <div className="w-16 h-16 rounded-full border-2 border-dashed border-[rgba(0,180,255,0.2)] flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="rgba(0,180,255,0.3)" strokeWidth="1.5">
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
-                  </svg>
-                </div>
-                <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "8px" }} className="text-[rgba(0,180,255,0.25)] tracking-widest uppercase">
-                  Add image → public/images/collab-{index + 1}.jpg
-                </span>
-              </div>
-            )}
-            {/* Green tint overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(6,13,31,0.7)] via-transparent to-transparent" />
-          </div>
-
-          {/* Name + role */}
-          <div className="px-4 pt-4 pb-2">
-            <div style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)", fontSize: "clamp(22px,3vw,30px)", lineHeight: 1, letterSpacing: "0.06em" }} className="text-white group-hover:text-[#00b4ff] transition-colors duration-300">
-              {collab.name}
-            </div>
-            <div style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)", fontSize: "12px" }} className="text-[rgba(242,237,230,0.45)] mt-1">{collab.role}</div>
-          </div>
-
-          <div className="px-4 pb-4">
-            <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-[rgba(0,180,255,0.5)] border border-[rgba(0,180,255,0.15)] px-2 py-0.5 tracking-wider">{collab.domain}</span>
-          </div>
-
-          <div style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "8px" }} className="absolute bottom-2.5 right-4 text-[rgba(0,180,255,0.25)] tracking-widest group-hover:text-[rgba(0,180,255,0.5)] transition-colors">
-            TAP TO SEE WHAT WE BUILT →
+        {/* Status bar */}
+        <div className="flex items-center justify-between px-4 py-2.5 border-b border-[rgba(0,180,255,0.12)]">
+          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-[rgba(0,180,255,0.6)] tracking-widest">
+            Collaborator {String(index + 1).padStart(2, "0")}
+          </span>
+          <div className="flex items-center gap-1.5">
+            <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} style={{ background: cfg.color }} />
+            <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "8px", color: cfg.color }} className="tracking-widest">{cfg.label}</span>
           </div>
         </div>
 
-        {/* ── BACK ── */}
+        {/* Image — fades in via AOS */}
         <div
-          className="absolute inset-0 border border-[rgba(0,180,255,0.3)] bg-[rgba(0,18,8,0.97)] p-5 flex flex-col justify-between"
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+          className="relative w-full h-52 overflow-hidden bg-[rgba(0,180,255,0.04)]"
+          data-aos="fade-in"
+          data-aos-delay={delay + 200}
+          data-aos-duration="1000"
         >
-          <div>
-            <div style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-[rgba(0,180,255,0.4)] tracking-widest mb-3 uppercase">
-              What we worked on together
+          {collab.image ? (
+            <img
+              src={collab.image}
+              alt={collab.name}
+              className="w-full h-full object-cover object-center opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+            />
+          ) : (
+            /* Placeholder until image is added */
+            <div className="w-full h-full flex flex-col items-center justify-center gap-3">
+              <div className="w-16 h-16 rounded-full border-2 border-dashed border-[rgba(0,180,255,0.25)] flex items-center justify-center">
+                <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="rgba(0,180,255,0.35)" strokeWidth="1.5">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                </svg>
+              </div>
+              <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "8px" }} className="text-[rgba(0,180,255,0.3)] tracking-widest uppercase">
+                Add image → public/images/collab-{index + 1}.jpg
+              </span>
             </div>
-            <p style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)", fontSize: "14px", lineHeight: "1.8" }} className="text-[rgba(242,237,230,0.75)]">
-              {collab.brief}
-            </p>
+          )}
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[rgba(5,11,24,0.8)] via-transparent to-transparent" />
+
+          {/* X icon overlay on hover */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[rgba(5,11,24,0.4)]">
+            <div className="w-12 h-12 rounded-full bg-[#00b4ff] flex items-center justify-center shadow-[0_0_20px_rgba(0,180,255,0.5)]">
+              <svg viewBox="0 0 24 24" fill="#050b18" className="w-5 h-5">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </div>
           </div>
-          <div className="flex items-center justify-between mt-4 pt-4 border-t border-[rgba(0,180,255,0.1)]">
-            {collab.link && (
-              <a href={collab.link} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
-                style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }}
-                className="text-[#00b4ff] hover:text-white transition-colors tracking-widest uppercase no-underline">
-                View Profile →
-              </a>
-            )}
-            <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-[rgba(0,180,255,0.3)] tracking-widest">← Tap to go back</span>
+        </div>
+
+        {/* Name + role — text fades up */}
+        <div
+          className="px-4 pt-4 pb-2"
+          data-aos="fade-up"
+          data-aos-delay={delay + 300}
+          data-aos-duration="700"
+        >
+          <div style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)", fontSize: "clamp(22px,3vw,30px)", lineHeight: 1, letterSpacing: "0.06em" }} className="text-white group-hover:text-[#00b4ff] transition-colors duration-300">
+            {collab.name}
           </div>
+          <div style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)", fontSize: "13px" }} className="text-white/70 mt-1">
+            {collab.role}
+          </div>
+        </div>
+
+        <div className="px-4 pb-4 flex items-center justify-between">
+          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-[rgba(0,180,255,0.6)] border border-[rgba(0,180,255,0.2)] px-2 py-0.5 tracking-wider">
+            {collab.domain}
+          </span>
+          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "8px" }} className="text-[rgba(0,180,255,0.4)] tracking-widest group-hover:text-[#00b4ff] transition-colors">
+            VIEW ON X →
+          </span>
         </div>
 
       </div>
-    </div>
+    </a>
   );
 }
 
 export default function Collaborators() {
-  const ref = useReveal();
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="network" ref={ref} className="relative border-b border-[rgba(0,180,255,0.08)] overflow-hidden">
-      <div className="border-b border-[rgba(0,180,255,0.1)] flex items-center justify-between px-6 md:px-10 py-4">
+    <section id="network" ref={ref} className="relative border-b border-[rgba(0,180,255,0.12)] overflow-hidden">
+      <div className="border-b border-[rgba(0,180,255,0.12)] flex items-center justify-between px-6 md:px-10 py-4">
         <div className="flex items-center gap-3">
           <div className="w-1.5 h-1.5 bg-[#00b4ff] rounded-full animate-pulse" />
-          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(0,180,255,0.6)] tracking-widest uppercase">
+          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(0,180,255,0.7)] tracking-widest uppercase">
             People I&apos;ve Worked With
           </span>
         </div>
-        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.2)] tracking-widest hidden md:block">
-          Tap any card to see what we built
+        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-white/60 tracking-widest hidden md:block">
+          Click any card to visit their X profile
         </span>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
+
+        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div className="reveal">
+          <div data-aos="fade-up" data-aos-duration="800">
             <h2 style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)", letterSpacing: "-0.01em" }} className="text-[clamp(40px,6vw,72px)] leading-none text-white">
               Who I&apos;ve <span className="text-[#00b4ff]">Collaborated</span> With
             </h2>
-            <p style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "10px" }} className="text-[rgba(0,180,255,0.35)] tracking-widest uppercase mt-3">
-              {COLLABORATORS.length} collaborators · tap any card to read the full story
+            <p style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "10px" }} className="text-[rgba(0,180,255,0.5)] tracking-widest uppercase mt-3">
+              {COLLABORATORS.length} collaborators · click any card to visit their X
             </p>
           </div>
-          <p style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }} className="reveal reveal-d1 text-[rgba(242,237,230,0.5)] text-sm leading-relaxed max-w-sm font-light">
-            These are the founders, strategists, and creators I&apos;ve partnered with to build things that actually worked. Every card has a real story behind it.
+          <p style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }} className="text-white/80 text-sm leading-relaxed max-w-sm font-light" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+            These are the founders, strategists, and creators I&apos;ve partnered with. Click any card to find them on X.
           </p>
         </div>
 
-        <div className="relative">
-          <NetworkLines cardRefs={cardRefs} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 relative z-10">
-            {COLLABORATORS.map((collab, i) => (
-              <CollabCard
-                key={collab.id}
-                collab={collab}
-                cardRef={(el) => { cardRefs.current[i] = el; }}
-                index={i}
-              />
-            ))}
-          </div>
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {COLLABORATORS.map((collab, i) => (
+            <CollabCard key={collab.id} collab={collab} index={i} />
+          ))}
         </div>
 
-        <div className="reveal reveal-d3 mt-16 border border-[rgba(0,180,255,0.08)] grid grid-cols-2 md:grid-cols-4 divide-x divide-[rgba(0,180,255,0.08)]">
+        {/* Stats */}
+        <div className="mt-16 border border-[rgba(0,180,255,0.12)] grid grid-cols-2 md:grid-cols-4 divide-x divide-[rgba(0,180,255,0.12)]" data-aos="fade-up" data-aos-delay="200" data-aos-duration="800">
           {[
             { value: "12+",  label: "Protocols & Projects" },
             { value: "3",    label: "Active Collaborators" },
             { value: "4",    label: "Blockchains Covered" },
             { value: "100%", label: "Always Delivered" },
           ].map((item, i) => (
-            <div key={i} className="px-6 py-5 text-center group hover:bg-[rgba(0,180,255,0.02)] transition-colors">
+            <div key={i} className="px-6 py-5 text-center group hover:bg-[rgba(0,180,255,0.04)] transition-colors">
               <div style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)", fontSize: "clamp(26px,4vw,38px)", lineHeight: 1 }} className="text-[#00b4ff] group-hover:text-white transition-colors">{item.value}</div>
-              <div style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-[rgba(242,237,230,0.25)] tracking-widest uppercase mt-1.5">{item.label}</div>
+              <div style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-white/60 tracking-widest uppercase mt-1.5">{item.label}</div>
             </div>
           ))}
         </div>

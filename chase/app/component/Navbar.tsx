@@ -16,7 +16,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? "bg-[rgba(6,13,31,0.92)] backdrop-blur-xl border-b border-[rgba(0,180,255,0.1)]" : "bg-transparent"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${scrolled ? "bg-[rgba(5,11,24,0.92)] backdrop-blur-xl border-b border-[rgba(0,180,255,0.20)]" : "bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-16">
         {/* Logo */}
         <a href="#hero" className="flex items-center gap-3 no-underline group">
@@ -32,13 +32,13 @@ export default function Navbar() {
           {["About", "Projects", "Network", "Contact"].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`}
               style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }}
-              className="text-xs text-[rgba(242,237,230,0.4)] hover:text-[#00b4ff] transition-colors duration-200 tracking-widest uppercase no-underline">
+              className="text-xs text-[rgba(242,237,230,0.90)] hover:text-[#00b4ff] transition-colors duration-200 tracking-widest uppercase no-underline">
               {item}
             </a>
           ))}
           <a href="#contact"
             style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }}
-            className="text-xs px-5 py-2.5 border border-[#00b4ff] text-[#00b4ff] hover:bg-[rgba(0,180,255,0.08)] hover:shadow-[0_0_20px_rgba(0,180,255,0.2)] transition-all duration-300 tracking-widest uppercase no-underline">
+            className="text-xs px-5 py-2.5 border border-[#00b4ff] text-[#00b4ff] hover:bg-[rgba(0,180,255,0.18)] hover:shadow-[0_0_20px_rgba(0,180,255,0.2)] transition-all duration-300 tracking-widest uppercase no-underline">
             Hire Me
           </a>
         </div>
@@ -52,12 +52,12 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden border-t border-[rgba(0,180,255,0.1)] bg-[rgba(6,13,31,0.97)] transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}`}>
+      <div className={`md:hidden border-t border-[rgba(0,180,255,0.20)] bg-[rgba(5,11,24,0.97)] transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"}`}>
         <div className="px-6 py-6 flex flex-col gap-5">
           {["About", "Projects", "Network", "Contact"].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}
               style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }}
-              className="text-sm text-[rgba(242,237,230,0.6)] hover:text-[#00b4ff] transition-colors uppercase tracking-widest no-underline">
+              className="text-sm text-[rgba(242,237,230,0.85)] hover:text-[#00b4ff] transition-colors uppercase tracking-widest no-underline">
               {item}
             </a>
           ))}

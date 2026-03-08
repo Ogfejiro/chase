@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-/* ── Force dark midnight blue theme on ALL devices ── */
+/* ── Force dark navy theme on ALL devices regardless of OS setting ── */
 :root {
   color-scheme: dark;
-  --background: #060d1f;
+  --background: #050b18;
   --foreground: #f2ede6;
   --accent: #00b4ff;
 }
@@ -11,7 +11,7 @@
 @media (prefers-color-scheme: light) {
   :root {
     color-scheme: dark;
-    --background: #060d1f;
+    --background: #050b18;
     --foreground: #f2ede6;
   }
 }
@@ -24,12 +24,12 @@
 }
 
 body {
-  background-color: #060d1f;
+  background-color: #050b18;
   color: #f2ede6;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ── Signal bar animation ── */
+/* ── Signal bar fill ── */
 .signal-bar-fill {
   height: 100%;
   width: var(--level, 0%);
@@ -38,8 +38,21 @@ body {
   transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Ticker animation ── */
+/* ── Ticker ── */
 @keyframes tickerFloat {
   from { transform: translateX(0); }
   to   { transform: translateX(-33.333%); }
+}
+
+/* ── Dossier card accent line ── */
+.dossier-line {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #00b4ff, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.dossier-card:hover .dossier-line {
+  opacity: 1;
 }
