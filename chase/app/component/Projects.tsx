@@ -49,7 +49,7 @@ const PROJECTS: Project[] = [
     name: "Mixer Fi KOL",
     description: "Acted as a KOL for Mixer Fi, a DeFi protocol. I wrote the content, shaped the narrative, and made sure the project's message reached the people it needed to reach clearly and convincingly.",
     impact: "Built credibility and drove meaningful attention to the protocol.",
-    image: "/images/IMG_0228.JPG",
+    image: "/images/kol.jpg",
     link: "https://x.com/mixer_fi?s=21",
   },
   {
@@ -60,7 +60,7 @@ const PROJECTS: Project[] = [
     name: "Aetherium X Ambassador",
     description: "Currently serving as an Ambassador for Aetherium X. I represent the project, onboard new community members, and act as a trusted face between the team and the wider Web3 audience.",
     impact: "Growing the community and strengthening trust in the project.",
-    image: "/images/kol.jpg",
+    image: "/images/IMG_0228.JPG",
     link: "https://x.com/aetheriumx_fun?s=21",
   },
 ];
