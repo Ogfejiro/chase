@@ -35,7 +35,7 @@ const COLLABORATORS: Collaborator[] = [
     role: "Marketer",
     domain: "Marketer",
     status: "ACTIVE",
-    image: "/images/10X.jpg",   // ← add image
+    image: "/images/10x.jpg",   // ← add image
     xLink: "https://x.com/10xofweb3?s=21", // ← add X link
   },
   {
