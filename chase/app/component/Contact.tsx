@@ -23,7 +23,7 @@ const SITE = {
   handle: "@Chase30BG",          // ← update
   twitter: "https://x.com/chas30bg?s=21",   // ← update
   telegram: "https://t.me/Chas30BG",         // ← update
-  discord: "https://discord.com/users/chase", // ← update with Chase's Discord link
+  discord: "https://discord.com/users/case30bg", // ← update with Chase's Discord link
 };
 
 function ContactGraphic() {
