@@ -18,7 +18,7 @@ function HeroGraphic() {
     <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
       {/* Using Next.js style — works on all deployments */}
       <img
-        src="/images/Hero.png"
+        src="/images/hero.png"
         alt=""
         style={{
           position: "absolute",
