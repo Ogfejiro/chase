@@ -35,9 +35,9 @@ const PROJECTS: Project[] = [
     code: "Project 01",
     status: "COMPLETED",
     tags: ["KOL", "Content", "NFT"],
-    name: "Humanity Protocol — KOL",
+    name: "Humanity Protocol KOL",
     description: "Served as a KOL for Humanity Protocol, creating content that built awareness and drove engagement. I crafted threads and posts that positioned the project in front of the right audience at the right time.",
-    impact: "→ Grew visibility and brought in a targeted, engaged audience.",
+    impact: "Grew visibility and brought in a targeted, engaged audience.",
     image: "/images/IMG_0226.JPG",
     link: "https://x.com/humanityprot?s=21",
   },
@@ -46,9 +46,9 @@ const PROJECTS: Project[] = [
     code: "Project 02",
     status: "COMPLETED",
     tags: ["KOL", "DeFi", "Content"],
-    name: "Mixer Fi — KOL",
-    description: "Acted as a KOL for Mixer Fi, a DeFi protocol. I wrote the content, shaped the narrative, and made sure the project's message reached the people it needed to reach — clearly and convincingly.",
-    impact: "→ Built credibility and drove meaningful attention to the protocol.",
+    name: "Mixer Fi KOL",
+    description: "Acted as a KOL for Mixer Fi, a DeFi protocol. I wrote the content, shaped the narrative, and made sure the project's message reached the people it needed to reach clearly and convincingly.",
+    impact: "Built credibility and drove meaningful attention to the protocol.",
     image: "/images/IMG_0228.JPG",
     link: "https://x.com/mixer_fi?s=21",
   },
@@ -57,9 +57,9 @@ const PROJECTS: Project[] = [
     code: "Project 03",
     status: "ONGOING",
     tags: ["Ambassador", "Community", "Strategy"],
-    name: "Aetherium X — Ambassador",
+    name: "Aetherium X Ambassador",
     description: "Currently serving as an Ambassador for Aetherium X. I represent the project, onboard new community members, and act as a trusted face between the team and the wider Web3 audience.",
-    impact: "→ Growing the community and strengthening trust in the project.",
+    impact: "Growing the community and strengthening trust in the project.",
     image: "/images/kol.jpg",
     link: "https://x.com/aetheriumx_fun?s=21",
   },
@@ -68,7 +68,7 @@ const PROJECTS: Project[] = [
 const STATUS_COLORS: Record<Project["status"], string> = {
   COMPLETED:  "text-[#00b4ff] border-[rgba(0,180,255,0.3)]",
   ONGOING:    "text-[#f59e0b] border-[rgba(245,158,11,0.3)]",
-  CLASSIFIED: "text-[rgba(242,237,230,0.90)] border-[rgba(242,237,230,0.1)]",
+  CLASSIFIED: "text-[rgba(242,237,230,0.95)] border-[rgba(242,237,230,0.95)]",
 };
 
 const STATUS_LABELS: Record<Project["status"], string> = {
@@ -107,25 +107,25 @@ function ProjectCard({ project, delay }: { project: Project; delay: string }) {
             </span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(5,11,24,0.6)] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(3,8,16,0.6)] via-transparent to-transparent" />
       </div>
 
       <div className="px-5 py-6 flex flex-col flex-1">
         <div className="flex flex-wrap gap-1.5 mb-4">
           {project.tags.map((tag) => (
-            <span key={tag} style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[9px] tracking-widest uppercase text-[rgba(242,237,230,0.70)] border border-[rgba(242,237,230,0.08)] px-2 py-0.5">{tag}</span>
+            <span key={tag} style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[9px] tracking-widest uppercase text-[rgba(242,237,230,0.95)] border border-[rgba(242,237,230,0.95)] px-2 py-0.5">{tag}</span>
           ))}
         </div>
 
         <h3 className="text-white text-xl font-bold mb-3 group-hover:text-[#00b4ff] transition-colors duration-300" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{project.name}</h3>
-        <p className="text-[rgba(242,237,230,0.85)] text-sm leading-relaxed mb-4 font-light flex-1" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{project.description}</p>
+        <p className="text-[rgba(242,237,230,0.95)] text-sm leading-relaxed mb-4 font-normal flex-1" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{project.description}</p>
         <p style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[11px] text-[#00b4ff] mb-6">{project.impact}</p>
 
         <div className="h-px bg-[rgba(0,180,255,0.18)] mb-5" />
 
         <a href={project.link} target="_blank" rel="noopener noreferrer" className="group/btn flex items-center gap-2 no-underline">
-          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] tracking-widest uppercase text-[rgba(242,237,230,0.90)] group-hover/btn:text-[#00b4ff] transition-colors">View Project →</span>
-          <div className="h-px w-6 bg-[rgba(242,237,230,0.55)] group-hover/btn:w-10 group-hover/btn:bg-[#00b4ff] transition-all duration-300" />
+          <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] tracking-widest uppercase text-[rgba(242,237,230,0.95)] group-hover/btn:text-[#00b4ff] transition-colors">View Project →</span>
+          <div className="h-px w-6 bg-[rgba(242,237,230,0.95)] group-hover/btn:w-10 group-hover/btn:bg-[#00b4ff] transition-all duration-300" />
         </a>
       </div>
     </div>
@@ -141,7 +141,7 @@ export default function Projects() {
           <div className="w-1.5 h-1.5 bg-[#00b4ff] rounded-full animate-pulse" />
           <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(0,180,255,0.6)] tracking-widest uppercase">My Work</span>
         </div>
-        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.55)] tracking-widest hidden md:block">Real projects, real results</span>
+        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.95)] tracking-widest hidden md:block">Real projects, real results</span>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28">
@@ -151,8 +151,8 @@ export default function Projects() {
               Projects I&apos;ve<br /><span className="text-[#00b4ff]">Worked On</span>
             </h2>
           </div>
-          <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" className="text-[rgba(242,237,230,0.80)] text-sm leading-relaxed max-w-xs font-light" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
-            A look at some of the protocols and communities I&apos;ve worked with — as a KOL and as an Ambassador. Each one had real stakes and real results.
+          <p data-aos="fade-up" data-aos-delay="100" data-aos-duration="800" className="text-[rgba(242,237,230,0.95)] text-sm leading-relaxed max-w-xs font-normal" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
+            A look at some of the protocols and communities I&apos;ve worked with as a KOL and as an Ambassador. Each one had real stakes and real results.
           </p>
         </div>
 

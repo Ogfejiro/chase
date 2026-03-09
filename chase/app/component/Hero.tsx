@@ -16,7 +16,7 @@ const X_LINK = "https://x.com/chas30bg?s=21";
 function HeroGraphic() {
   return (
     <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
-      {/* Using Next.js style — works on all deployments */}
+      {/* Using Next.js style works on all deployments */}
       <img
         src="/images/hero.png"
         alt=""
@@ -31,11 +31,11 @@ function HeroGraphic() {
         }}
       />
       {/* Dark tint */}
-      <div style={{ position: "absolute", inset: 0, background: "rgba(5,11,24,0.30)" }} />
+      <div style={{ position: "absolute", inset: 0, background: "rgba(3,8,16,0.30)" }} />
       {/* Left fade so text is readable */}
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #050b18 0%, rgba(5,11,24,0.55) 40%, transparent 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, #030810 0%, rgba(3,8,16,0.55) 40%, transparent 100%)" }} />
       {/* Bottom fade into next section */}
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(5,11,24,0.15) 0%, transparent 40%, #050b18 100%)" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(3,8,16,0.15) 0%, transparent 40%, #030810 100%)" }} />
     </div>
   );
 }
@@ -86,7 +86,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 w-16 h-16 md:w-24 md:h-24 border-l border-b border-[rgba(0,180,255,0.3)]" />
       <div className="absolute bottom-0 right-0 w-16 h-16 md:w-24 md:h-24 border-r border-b border-[rgba(0,180,255,0.3)]" />
 
-      {/* Main content — pushed below navbar with pt */}
+      {/* Main content pushed below navbar with pt */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-5 md:px-10 pt-28 md:pt-32 pb-20">
 
         {/* Avatar + Name */}
@@ -95,7 +95,7 @@ export default function Hero() {
             <div className="w-12 h-12 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-[#00b4ff] shadow-[0_0_20px_rgba(0,180,255,0.5)]">
               <img src="/images/chasepic.jpg" alt="Chase" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#00b4ff] border-2 border-[#050b18] animate-pulse" />
+            <div className="absolute bottom-0.5 right-0.5 w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#00b4ff] border-2 border-[#030810] animate-pulse" />
           </div>
           <h1
             style={{
@@ -125,7 +125,7 @@ export default function Hero() {
 
         {/* Bio */}
         <p
-          className="text-white/90 text-sm md:text-lg max-w-sm md:max-w-xl leading-relaxed mb-8 md:mb-10 font-light"
+          className="text-white text-sm md:text-lg max-w-sm md:max-w-xl leading-relaxed mb-8 md:mb-10 font-normal"
           style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}
           data-aos="fade-up" data-aos-delay="200" data-aos-duration="800"
         >
@@ -139,7 +139,7 @@ export default function Hero() {
           <a
             href="#contact"
             className="group relative overflow-hidden no-underline"
-            style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "11px", letterSpacing: "0.1em", fontWeight: 700, textTransform: "uppercase", padding: "12px 28px", background: "#00b4ff", color: "#050b18", display: "inline-block" }}
+            style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "11px", letterSpacing: "0.1em", fontWeight: 700, textTransform: "uppercase", padding: "12px 28px", background: "#00b4ff", color: "#030810", display: "inline-block" }}
           >
             <span style={{ position: "relative", zIndex: 1 }}>Hire Me →</span>
             <div className="absolute inset-0 bg-white translate-x-[-101%] group-hover:translate-x-0 transition-transform duration-300" />
@@ -174,7 +174,7 @@ export default function Hero() {
                 {stat.value}
               </span>
               <span
-                className="text-white/70 tracking-widest"
+                className="text-white/95 tracking-widest"
                 style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "8px" }}
               >
                 {stat.label}

@@ -20,10 +20,10 @@ function useReveal() {
 interface Skill { code: string; title: string; description: string; level: number; }
 
 const SKILLS: Skill[] = [
-  { code: "01", title: "Ambassador Lead", description: "I build and run ambassador programs from scratch — finding the right people, giving them direction, and turning them into a coordinated force that grows protocols.", level: 92 },
-  { code: "02", title: "Community Building", description: "I don't just grow numbers. I build communities where people actually show up, talk, and stay — because they feel like they belong to something real.", level: 95 },
-  { code: "03", title: "KOL & Content", description: "I create content that gets attention and earns trust. Threads, announcements, long-form — written to move people from curious to convinced.", level: 88 },
-  { code: "04", title: "Web3 Writing", description: "Whether it's a whitepaper, a tweet thread, or a launch post — I write with clarity and conviction. Every word has a job to do.", level: 97 },
+  { code: "01", title: "Ambassador Lead", description: "I build and run ambassador programs from scratch finding the right people, giving them direction, and turning them into a coordinated force that grows protocols.", level: 92 },
+  { code: "02", title: "Community Building", description: "I don't just grow numbers. I build communities where people actually show up, talk, and stay because they feel like they belong to something real.", level: 95 },
+  { code: "03", title: "KOL Manager", description: "I create content that gets attention and earns trust. Threads, announcements, long-form written to move people from curious to convinced.", level: 88 },
+  { code: "04", title: "Web3 Writing", description: "Whether it's a whitepaper, a tweet thread, or a launch post I write with clarity and conviction. Every word has a job to do.", level: 97 },
 ];
 
 function SignalBar({ level }: { level: number }) {
@@ -123,14 +123,14 @@ export default function About() {
             About Me
           </span>
         </div>
-        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.55)] tracking-widest hidden md:block">
+        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.95)] tracking-widest hidden md:block">
           Who is Chase?
         </span>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-28 grid md:grid-cols-2 gap-16 md:gap-24 items-start">
 
-        {/* Left — bio */}
+        {/* Left bio */}
         <div>
           <div data-aos="fade-up" data-aos-duration="800">
             <h2 className="text-[clamp(42px,7vw,80px)] leading-none text-white mb-6" style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)", letterSpacing: "-0.01em" }}>
@@ -138,14 +138,14 @@ export default function About() {
             </h2>
           </div>
           <div className="reveal reveal-d1 space-y-5">
-            <p className="text-[rgba(242,237,230,0.88)] leading-[1.9] font-light text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
-              I&apos;m <span className="text-[#f2ede6] font-medium">Chase</span> — a Web3 professional who has spent years helping protocols grow their communities, sharpen their voice, and turn strangers into believers.
+            <p className="text-[rgba(242,237,230,0.95)] leading-[1.9] font-normal text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
+              I&apos;m <span className="text-[#f2ede6] font-medium">Chase</span> a Web3 professional who has spent years helping protocols grow their communities, sharpen their voice, and turn strangers into believers.
             </p>
-            <p className="text-[rgba(242,237,230,0.88)] leading-[1.9] font-light text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
-              I combine <span className="text-[#f2ede6] font-medium">strategic thinking with strong writing</span> — so every campaign I touch has both a clear direction and words that actually land. I&apos;ve led ambassador programs, built communities from zero, and written content that moves markets.
+            <p className="text-[rgba(242,237,230,0.95)] leading-[1.9] font-normal text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
+              I combine <span className="text-[#f2ede6] font-medium">strategic thinking with strong writing</span> so every campaign I touch has both a clear direction and words that actually land. I&apos;ve led ambassador programs, built communities from zero, and written content that moves markets.
             </p>
-            <p className="text-[rgba(242,237,230,0.88)] leading-[1.9] font-light text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
-              If you need someone who can <span className="text-[#00b4ff]">build, grow, and communicate</span> — that&apos;s exactly what I do.
+            <p className="text-[rgba(242,237,230,0.95)] leading-[1.9] font-normal text-base" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>
+              If you need someone who can <span className="text-[#00b4ff]">build, grow, and communicate</span> that&apos;s exactly what I do.
             </p>
           </div>
           <div className="reveal reveal-d2 mt-10">
@@ -156,7 +156,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Right — skills */}
+        {/* Right skills */}
         <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
           <div style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[9px] text-[rgba(0,180,255,0.4)] tracking-widest mb-6 uppercase">
             What I&apos;m good at
@@ -169,11 +169,11 @@ export default function About() {
                     <div className="mb-1.5">
                       <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[9px] text-[rgba(0,180,255,0.4)] tracking-widest">#{skill.code}</span>
                     </div>
-                    <h3 className="text-[rgba(242,237,230,0.9)] font-semibold text-sm group-hover:text-white transition-colors" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{skill.title}</h3>
+                    <h3 className="text-[rgba(242,237,230,0.95)] font-semibold text-sm group-hover:text-white transition-colors" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{skill.title}</h3>
                   </div>
                   <span className="text-[#00b4ff] flex-shrink-0 mt-1" style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)", fontSize: "22px", lineHeight: 1 }}>{skill.level}%</span>
                 </div>
-                <p className="text-[rgba(242,237,230,0.80)] text-xs leading-relaxed mb-3 font-light" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{skill.description}</p>
+                <p className="text-[rgba(242,237,230,0.95)] text-xs leading-relaxed mb-3 font-normal" style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }}>{skill.description}</p>
                 <SignalBar level={skill.level} />
               </div>
             ))}

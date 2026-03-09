@@ -13,9 +13,9 @@ export default function Ticker() {
   return (
     <div className="border-y border-[rgba(0,180,255,0.15)] bg-[rgba(0,180,255,0.02)] py-4 overflow-hidden relative">
       {/* Fade left edge */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#060d1f] to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#030810] to-transparent z-10 pointer-events-none" />
       {/* Fade right edge */}
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#060d1f] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#030810] to-transparent z-10 pointer-events-none" />
 
       <div
         className="flex items-center w-max"
@@ -31,7 +31,7 @@ export default function Ticker() {
               letterSpacing: "0.08em",
               color: i % TICKER_ITEMS.length === 0
                 ? "#00b4ff"
-                : "rgba(242,237,230,0.8)",
+                : "rgba(242,237,230,0.95)",
               whiteSpace: "nowrap",
             }}
           >

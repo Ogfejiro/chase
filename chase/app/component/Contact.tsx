@@ -29,8 +29,8 @@ function ContactGraphic() {
   const bars = Array.from({ length: 32 }, (_, i) => i);
   return (
     <div className="absolute left-0 bottom-0 top-0 w-56 opacity-[0.22] pointer-events-none hidden xl:flex items-center justify-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#050b18] z-10" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#050b18] via-transparent to-[#050b18] z-10" />
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#030810] z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#030810] via-transparent to-[#030810] z-10" />
       <svg viewBox="0 0 220 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
         <defs>
           <filter id="glow-wave">
@@ -105,7 +105,7 @@ export default function Contact() {
       `💬 Subject: ${form.subject}\n\n` +
       `📝 Message:\n${form.message}`;
 
-    // Opens Telegram with the message pre-filled — user just hits send
+    // Opens Telegram with the message pre-filled user just hits send
     const telegramUrl = `https://t.me/Chas30BG?text=${encodeURIComponent(text)}`;
     window.open(telegramUrl, "_blank");
 
@@ -125,14 +125,14 @@ export default function Contact() {
             Get in Touch
           </span>
         </div>
-        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.55)] tracking-widest hidden md:block">
+        <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)" }} className="text-[10px] text-[rgba(242,237,230,0.95)] tracking-widest hidden md:block">
           I usually reply within 24 hours
         </span>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 py-16 md:py-28 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
 
-        {/* Left — context */}
+        {/* Left context */}
         <div>
           <div data-aos="fade-up" data-aos-duration="800">
             <h2 className="text-[clamp(42px,7vw,80px)] leading-none text-white mb-6" style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)" }}>
@@ -140,11 +140,11 @@ export default function Contact() {
             </h2>
           </div>
 
-          <p style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }} className="text-[rgba(242,237,230,0.85)] text-base leading-relaxed mb-6 font-light" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
-            Whether you&apos;re launching something new, growing a community, or need someone to sharpen your voice in Web3 — I&apos;d love to hear about it.
+          <p style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }} className="text-[rgba(242,237,230,0.95)] text-base leading-relaxed mb-6 font-normal" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+            Whether you&apos;re launching something new, growing a community, or need someone to sharpen your voice in Web3 I&apos;d love to hear about it.
           </p>
-          <p style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }} className="text-[rgba(242,237,230,0.85)] text-base leading-relaxed mb-10 font-light" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
-            Fill in the form or reach out directly on any of the platforms below. No long back-and-forth — just a straight conversation about what you need.
+          <p style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }} className="text-[rgba(242,237,230,0.95)] text-base leading-relaxed mb-10 font-normal" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
+            Fill in the form or reach out directly on any of the platforms below. No long back-and-forth just a straight conversation about what you need.
           </p>
 
           {/* Direct contact */}
@@ -157,7 +157,7 @@ export default function Contact() {
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-4">
                 <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-[rgba(0,180,255,0.4)] tracking-widest w-24 uppercase shrink-0">{item.label}</span>
-                <a href={item.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "12px" }} className="text-[rgba(242,237,230,0.85)] hover:text-[#00b4ff] transition-colors no-underline">{item.val}</a>
+                <a href={item.href} target="_blank" rel="noopener noreferrer" style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "12px" }} className="text-[rgba(242,237,230,0.95)] hover:text-[#00b4ff] transition-colors no-underline">{item.val}</a>
               </div>
             ))}
           </div>
@@ -171,20 +171,20 @@ export default function Contact() {
               { href: SITE.discord,           label: "Discord",  path: "M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" },
             ].map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
-                className="w-10 h-10 border border-[rgba(0,180,255,0.28)] flex items-center justify-center text-[rgba(242,237,230,0.90)] hover:border-[#00b4ff] hover:text-[#00b4ff] transition-all duration-200 no-underline">
+                className="w-10 h-10 border border-[rgba(0,180,255,0.28)] flex items-center justify-center text-[rgba(242,237,230,0.95)] hover:border-[#00b4ff] hover:text-[#00b4ff] transition-all duration-200 no-underline">
                 <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d={s.path}/></svg>
               </a>
             ))}
           </div>
         </div>
 
-        {/* Right — form */}
+        {/* Right form */}
         <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
           {/* Terminal header */}
           <div className="border border-[rgba(0,180,255,0.28)] border-b-0">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(0,180,255,0.20)] bg-[rgba(0,180,255,0.02)]">
-              <div className="w-2 h-2 rounded-full bg-[rgba(242,237,230,0.1)]"/>
-              <div className="w-2 h-2 rounded-full bg-[rgba(242,237,230,0.1)]"/>
+              <div className="w-2 h-2 rounded-full bg-[rgba(242,237,230,0.95)]"/>
+              <div className="w-2 h-2 rounded-full bg-[rgba(242,237,230,0.95)]"/>
               <div className="w-2 h-2 rounded-full bg-[rgba(0,180,255,0.4)]"/>
               <span style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px" }} className="text-[rgba(0,180,255,0.3)] tracking-widest ml-3">
                 Send Chase a message
@@ -248,7 +248,7 @@ export default function Contact() {
               />
             </div>
 
-            {/* Send button — opens Telegram with all form details pre-filled */}
+            {/* Send button opens Telegram with all form details pre-filled */}
             <button
               onClick={handleSendToTelegram}
               disabled={sending}
@@ -256,7 +256,7 @@ export default function Contact() {
                 width: "100%",
                 padding: "16px",
                 background: "#00b4ff",
-                color: "#050b18",
+                color: "#030810",
                 fontWeight: 700,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
@@ -273,8 +273,8 @@ export default function Contact() {
               {sending ? "Opening Telegram..." : "Send Message on Telegram →"}
             </button>
 
-            <p style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px", textAlign: "center" }} className="text-[rgba(242,237,230,0.55)] tracking-widest">
-              Clicking will open Telegram with your message pre-filled — just hit send
+            <p style={{ fontFamily: "var(--font-mono,'Space Mono',monospace)", fontSize: "9px", textAlign: "center" }} className="text-[rgba(242,237,230,0.95)] tracking-widest">
+              Clicking will open Telegram with your message pre-filled just hit send
             </p>
           </div>
         </div>

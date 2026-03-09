@@ -31,18 +31,18 @@ interface Collaborator {
 const COLLABORATORS: Collaborator[] = [
   {
     id: "col-01",
-    name: "10XOFWEB3  ",
+    name:"10XOFWEB3",
     role: "Marketer",
     domain: "Marketer",
     status: "ACTIVE",
-    image: "/images/10x.jpg",   // ← add image
+    image: "/images/10X.jpg",   // ← add image
     xLink: "https://x.com/10xofweb3?s=21", // ← add X link
   },
   {
     id: "col-02",
     name: "AlegeOfficial",
-    role: "Brand Marketer",
-    domain: "Brand Marketer",
+    role: "Branded Marketer",
+    domain: "Branded Marketer",
     status: "COMPLETED",
     image: "/images/redguy.jpg",
     xLink: "https://x.com/alegeofficial?s=21",
@@ -79,7 +79,7 @@ function CollabCard({ collab, index }: { collab: Collaborator; index: number }) 
       data-aos-delay={delay}
       data-aos-duration="800"
     >
-      <div className="relative border border-[rgba(0,180,255,0.18)] hover:border-[rgba(0,180,255,0.5)] bg-[rgba(5,11,24,0.85)] transition-all duration-300 overflow-hidden">
+      <div className="relative border border-[rgba(0,180,255,0.18)] hover:border-[rgba(0,180,255,0.5)] bg-[rgba(3,8,16,0.85)] transition-all duration-300 overflow-hidden">
 
         {/* Left accent line */}
         <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[#00b4ff] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -95,7 +95,7 @@ function CollabCard({ collab, index }: { collab: Collaborator; index: number }) 
           </div>
         </div>
 
-        {/* Image — fades in via AOS */}
+        {/* Image fades in via AOS */}
         <div
           className="relative w-full h-52 overflow-hidden bg-[rgba(0,180,255,0.04)]"
           data-aos="fade-in"
@@ -123,19 +123,19 @@ function CollabCard({ collab, index }: { collab: Collaborator; index: number }) 
             </div>
           )}
           {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[rgba(5,11,24,0.8)] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[rgba(3,8,16,0.8)] via-transparent to-transparent" />
 
           {/* X icon overlay on hover */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[rgba(5,11,24,0.4)]">
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[rgba(3,8,16,0.4)]">
             <div className="w-12 h-12 rounded-full bg-[#00b4ff] flex items-center justify-center shadow-[0_0_20px_rgba(0,180,255,0.5)]">
-              <svg viewBox="0 0 24 24" fill="#050b18" className="w-5 h-5">
+              <svg viewBox="0 0 24 24" fill="#030810" className="w-5 h-5">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </div>
           </div>
         </div>
 
-        {/* Name + role — text fades up */}
+        {/* Name + role text fades up */}
         <div
           className="px-4 pt-4 pb-2"
           data-aos="fade-up"
@@ -145,7 +145,7 @@ function CollabCard({ collab, index }: { collab: Collaborator; index: number }) 
           <div style={{ fontFamily: "var(--font-display,'Bebas Neue',cursive)", fontSize: "clamp(22px,3vw,30px)", lineHeight: 1, letterSpacing: "0.06em" }} className="text-white group-hover:text-[#00b4ff] transition-colors duration-300">
             {collab.name}
           </div>
-          <div style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)", fontSize: "13px" }} className="text-white/70 mt-1">
+          <div style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)", fontSize: "13px" }} className="text-white/95 mt-1">
             {collab.role}
           </div>
         </div>
@@ -193,7 +193,7 @@ export default function Collaborators() {
               {COLLABORATORS.length} collaborators · click any card to visit their X
             </p>
           </div>
-          <p style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }} className="text-white/80 text-sm leading-relaxed max-w-sm font-light" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+          <p style={{ fontFamily: "var(--font-sans,'Cabinet Grotesk',sans-serif)" }} className="text-white/95 text-sm leading-relaxed max-w-sm font-normal" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
             These are the founders, strategists, and creators I&apos;ve partnered with. Click any card to find them on X.
           </p>
         </div>
