@@ -21,7 +21,7 @@ const SITE = {
   email: "chas30bg@gmail.com",
   handle: "@Chas30BG",
   twitter: "https://x.com/chas30bg?s=21",
-  telegram: "https://t.me/Chas30BG",
+  telegram: "https://t.me/Chas30BG1",
   discord: "https://discord.com/users/chas30bg",
 };
 
