@@ -106,7 +106,7 @@ export default function Contact() {
       `📝 Message:\n${form.message}`;
 
     // Opens Telegram with the message pre-filled user just hits send
-    const telegramUrl = `https://t.me/Chas30BG?text=${encodeURIComponent(text)}`;
+    const telegramUrl = `https://t.me/Chas30BG1?text=${encodeURIComponent(text)}`;
     window.open(telegramUrl, "_blank");
 
     setSending(false);
